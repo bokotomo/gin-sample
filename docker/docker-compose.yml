@@ -1,0 +1,21 @@
+version: "3.6"
+
+services:
+  app:
+    build: .
+    container_name: "gin-app"
+    tty: true
+    ports:
+      - 9998:80
+    volumes:
+      - ../:/src
+  mysql8.0:
+    image: "mysql:8.0"
+    container_name: "gin-mysql"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - ./mysql/my.conf:/etc/mysql/conf.d/docker.cnf
+    ports:
+      - 3399:3306
+
