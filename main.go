@@ -1,14 +1,15 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+  "github.com/gin-gonic/gin"
+  "strconv"
+  "gin-sample/router"
+)
 
 func main() {
-  r := gin.Default()
-  r.GET("/ping", func(c *gin.Context) {
-    c.JSON(200, gin.H{
-      "message": "pong",
-    })
-  })
+  port := 80
 
-  r.Run(":80")
+  r := gin.Default()
+  router.App(r)
+  r.Run(":" + strconv.Itoa(port))
 }
