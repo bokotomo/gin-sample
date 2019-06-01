@@ -3,8 +3,19 @@
 
 # 使い方
 ```
-cd docker
+cd ./infrastructure/docker
+
 docker-compose up -d
+
+docker-compose exec app bash
+
+make init
+
+go run migrate.go
+
+go run seed.go
+
+go run main.go
 ```
 
 # ファイル設計  
@@ -22,4 +33,3 @@ Http
 
 repository  
 docker  
-

@@ -2,20 +2,30 @@ version: "3.6"
 
 services:
   app:
-    build: .
+    build: ./go
     container_name: "gin-app"
     tty: true
     ports:
       - 9998:80
     volumes:
       - ../../:/gin-sample
-  mysql8.0:
+  db:
     image: "mysql:8.0"
     container_name: "gin-mysql"
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: dev
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+      MYSQL_DATABASE: dev
     volumes:
       - ./mysql/my.conf:/etc/mysql/conf.d/docker.cnf
     ports:
-      - 3399:3306
-
+      - 3999:3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: "gin-phpmyadmin"
+    ports:
+      - 8999:80
+    environment:
+      PMA_HOST: db

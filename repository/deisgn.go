@@ -2,7 +2,8 @@ package repository
 
 import (
 	. "gin-sample/domain"
-  "errors"
+	. "gin-sample/driver"
+	"gin-sample/model"
 )
 
 type DesignRepository struct {
@@ -14,9 +15,15 @@ func NewDesignRepository() *DesignRepository {
 
 func (this *DesignRepository) FindAllDesigns() ([]*Design, error) {
   var designs []*Design
+  modelDesigns := []model.Design{}
 
-  designs = append(designs, NewDesign(1, "title"))
-  designs = append(designs, NewDesign(2, "title"))
+  if err := DB.Find(&modelDesigns).Error; err != nil {
+    return []*Design{}, err
+  }
 
-	return designs, errors.New("えらーだよ＾＾")
+  for _, design := range modelDesigns {
+    designs = append(designs, NewDesign(design.ID, design.Title))
+  }
+
+	return designs, nil
 }

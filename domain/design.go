@@ -1,11 +1,11 @@
 package domain
 
 type Design struct {
-	Id    int `json:"id"`
+	Id    uint   `json:"id"`
 	Title string `json:"name"`
 }
 
-func NewDesign(id int, title string) *Design {
+func NewDesign(id uint, title string) *Design {
 	return &Design{
 		Id:    id,
 		Title: title,
