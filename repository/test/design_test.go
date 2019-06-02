@@ -3,6 +3,7 @@ package repository
 import (
 	"testing"
 	"github.com/stretchr/testify/assert"
+	. "gin-sample/repository"
 )
 
 func TestFindAllDesigns(t *testing.T) {

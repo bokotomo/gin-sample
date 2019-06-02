@@ -6,3 +6,6 @@ lint:
 
 check:
 	gofmt -s -d driver repository domain http model router usecase clear_database.go migrate.go seed.go main.go
+
+test:
+	go test -v gin-sample/usecase/test && go test -v gin-sample/repository/test

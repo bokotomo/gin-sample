@@ -2,6 +2,9 @@
 ginのサンプル  
 
 # 使い方
+下のコマンドを打ったら、このURLを読み込んでみる。  
+http://localhost:9998/v1/designs    
+
 ```
 cd ./infrastructure/docker
 
@@ -28,6 +31,12 @@ make check
 ```
 make lint
 ```
+
+# 単体テスト実行
+```
+make test
+```
+
 
 # ファイル設計  
 Domain(Entities)  
