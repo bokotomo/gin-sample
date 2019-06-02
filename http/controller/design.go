@@ -1,14 +1,14 @@
 package controller
 
 import (
-  "github.com/gin-gonic/gin"
-  . "gin-sample/http/response"
-  . "gin-sample/usecase"
-  . "gin-sample/repository"
+	. "gin-sample/http/response"
+	. "gin-sample/repository"
+	. "gin-sample/usecase"
+	"github.com/gin-gonic/gin"
 )
 
 func DesignIndex(context *gin.Context) {
 	uc := NewDesignUseCase(NewDesignRepository())
 	designs, err := uc.FindAllDesigns()
-  ResponseDesignIndex(context, designs, err)
+	ResponseDesignIndex(context, designs, err)
 }

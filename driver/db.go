@@ -1,9 +1,10 @@
 package driver
 
 import (
+	"fmt"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/jinzhu/gorm"
 	"os"
-  "github.com/jinzhu/gorm"
-  _ "github.com/go-sql-driver/mysql"
 )
 
 var DB *gorm.DB = nil
@@ -12,16 +13,17 @@ func Init() {
 	if DB != nil {
 		return
 	}
-  host := os.Getenv("DB_HOST")
-  database := os.Getenv("DB_DATABASE")
-  user := os.Getenv("DB_USER")
-  password := os.Getenv("DB_PASSWORD")
-  var err error
-  DB, err = gorm.Open(
-    "mysql",
-    user + ":" + password + "@tcp(" + host + ")/" + database + "?charset=utf8&parseTime=True&loc=Local",
-  )
-  if err != nil {
-    panic("failed to connect database")
-  }
+
+	formmat := "%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local"
+	dataSource := fmt.Sprintf(formmat,
+		os.Getenv("DB_USER"),
+		os.Getenv("DB_PASSWORD"),
+		os.Getenv("DB_HOST"),
+		os.Getenv("DB_DATABASE"),
+	)
+	var err error
+	DB, err = gorm.Open("mysql", dataSource)
+	if err != nil {
+		panic("failed to connect database")
+	}
 }

@@ -1,19 +1,17 @@
 package response
 
 import (
-  "github.com/gin-gonic/gin"
-  . "gin-sample/domain"
+	. "gin-sample/domain"
+	"github.com/gin-gonic/gin"
 )
 
 func ResponseDesignIndex(context *gin.Context, designs []*Design, err error) {
-  if err != nil {
-    context.JSON(400, gin.H{
-      "error": err.Error(),
-    })
-    return
-  }
+	if err != nil {
+		NewError(context, 400, 0, err)
+		return
+	}
 
-  context.JSON(200, gin.H{
-    "message": designs,
-  })
+	context.JSON(200, gin.H{
+		"designs": designs,
+	})
 }

@@ -1,5 +1,5 @@
 # gin-sample
-
+ginのサンプル  
 
 # 使い方
 ```
@@ -16,6 +16,17 @@ go run migrate.go
 go run seed.go
 
 go run main.go
+```
+
+# 構文チェック
+
+```
+make check
+```
+
+# 構文自動修正
+```
+make lint
 ```
 
 # ファイル設計  

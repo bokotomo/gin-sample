@@ -1,27 +1,27 @@
 package main
 
 import (
-  "github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"gin-sample/driver"
-  "gin-sample/router"
-  "strconv"
+	"gin-sample/router"
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
+	"strconv"
 )
 
 func main() {
-  port := 80
+	port := 80
 
-  // Load ENV
+	// Load ENV
 	if err := godotenv.Load(); err != nil {
-    panic(".env file cannot be load.")
+		panic(".env file cannot be load.")
 	}
 
-  // DB connection
-  driver.Init()
-  defer driver.DB.Close()
+	// DB connection
+	driver.Init()
+	defer driver.DB.Close()
 
-  // Routing
-  r := gin.Default()
-  router.App(r)
-  r.Run(":" + strconv.Itoa(port))
+	// Routing
+	r := gin.Default()
+	router.App(r)
+	r.Run(":" + strconv.Itoa(port))
 }

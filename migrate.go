@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-  Init()
-  DB.AutoMigrate(&Design{})
-  defer DB.Close()
+	Init()
+	DB.AutoMigrate(&Design{})
+	defer DB.Close()
 }

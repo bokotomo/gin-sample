@@ -1,11 +1,11 @@
 package router
 
 import (
-  "github.com/gin-gonic/gin"
-  . "gin-sample/http/controller"
+	. "gin-sample/http/controller"
+	"github.com/gin-gonic/gin"
 )
 
 func App(router *gin.Engine) {
-  version := "/v1"
-  router.GET(version+"/designs", DesignIndex)
+	version := "/v1"
+	router.GET(version+"/designs", DesignIndex)
 }

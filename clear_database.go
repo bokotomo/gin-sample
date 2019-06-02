@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-  Init()
-  DB.DropTable(&Design{})
-  defer DB.Close()
+	Init()
+	DB.DropTable(&Design{})
+	defer DB.Close()
 }
