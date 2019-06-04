@@ -1,10 +1,10 @@
 package usecase
 
 import (
+	. "gin-sample/driver"
+	"github.com/joho/godotenv"
 	"os"
 	"testing"
-	"github.com/joho/godotenv"
-	. "gin-sample/driver"
 )
 
 func TestMain(m *testing.M) {
@@ -12,7 +12,7 @@ func TestMain(m *testing.M) {
 		panic(".env file cannot be load.")
 	}
 	Init()
-  defer DB.Close()
+	defer DB.Close()
 
 	code := m.Run()
 

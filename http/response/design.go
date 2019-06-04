@@ -11,7 +11,15 @@ func ResponseDesignIndex(context *gin.Context, designs []*Design, err error) {
 		return
 	}
 
+	designsJson := []map[string]interface{}{}
+	for _, design := range designs {
+		designsJson = append(designsJson, map[string]interface{}{
+			"id":    design.Id(),
+			"title": design.Title(),
+		})
+	}
+
 	context.JSON(200, gin.H{
-		"designs": designs,
+		"designs": designsJson,
 	})
 }
