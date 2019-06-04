@@ -5,10 +5,12 @@ import (
 	. "gin-sample/repository"
 	. "gin-sample/usecase"
 	"github.com/gin-gonic/gin"
+	"strconv"
 )
 
-func DesignIndex(context *gin.Context) {
+func DesignIndex(c *gin.Context) {
 	uc := NewDesignUseCase(NewDesignRepository())
-	designs, err := uc.FindAllDesigns()
-	ResponseDesignIndex(context, designs, err)
+	page, _ := strconv.Atoi(c.Query("page"))
+	designs, err := uc.FindDesigns(page)
+	ResponseDesignIndex(c, designs, err)
 }

@@ -13,11 +13,15 @@ func NewDesignRepository() *DesignRepository {
 	return new(DesignRepository)
 }
 
-func (this *DesignRepository) FindAllDesigns() ([]*Design, error) {
+// デザイン一覧をページーションで返す
+func (this *DesignRepository) FindDesigns(page int) ([]*Design, error) {
 	var designs []*Design
 	modelDesigns := []model.Design{}
+	pageSize := 3
+	offset := pageSize*page - 1
 
-	if err := DB.Find(&modelDesigns).Error; err != nil {
+	err := DB.Offset(offset).Limit(pageSize).Find(&modelDesigns).Error
+	if err != nil {
 		return []*Design{}, err
 	}
 

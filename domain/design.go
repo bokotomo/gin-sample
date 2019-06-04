@@ -1,3 +1,6 @@
+//
+// デザインを扱うドメイン
+//
 package domain
 
 type Design struct {

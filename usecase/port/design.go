@@ -5,5 +5,5 @@ import (
 )
 
 type DesignPort interface {
-	FindAllDesigns() ([]*Design, error)
+	FindDesigns(page int) ([]*Design, error)
 }
