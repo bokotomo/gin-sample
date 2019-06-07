@@ -9,6 +9,7 @@ import (
 
 func TestFindAllDesigns(t *testing.T) {
 	uc := NewDesignUseCase(NewDesignRepository())
-	_, err := uc.FindAllDesigns()
+	page := 1
+	_, _, err := uc.FindDesigns(page)
 	assert.Empty(t, err)
 }

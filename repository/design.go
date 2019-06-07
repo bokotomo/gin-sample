@@ -13,21 +13,39 @@ func NewDesignRepository() *DesignRepository {
 	return new(DesignRepository)
 }
 
-// デザイン一覧をページーションで返す
-func (this *DesignRepository) FindDesigns(page int) ([]*Design, error) {
-	var designs []*Design
-	modelDesigns := []model.Design{}
-	pageSize := 3
-	offset := pageSize*page - 1
+/*
+ * ページングトータル数を返す
+ * total   ページングトータル数
+ */
+func (this *DesignRepository) FindDesignsTotal(total *int) error {
+	return DB.Model(&model.Design{}).Count(total).Error
+}
 
-	err := DB.Offset(offset).Limit(pageSize).Find(&modelDesigns).Error
-	if err != nil {
-		return []*Design{}, err
+/*
+ * デザイン一覧をページーションで返す
+ * designs デザインドメイン一覧
+ * total   ページングトータル数
+ * page    ページング番号
+ */
+func (this *DesignRepository) FindDesigns(designs *[10]*Design, total *int, page int) error {
+	resultDesigns := []model.Design{}
+	if page < 0 {
+		page = 1
+	}
+	pageSize := 10
+	offset := pageSize * (page - 1)
+
+	if err := this.FindDesignsTotal(total); err != nil {
+		return err
 	}
 
-	for _, design := range modelDesigns {
-		designs = append(designs, NewDesign(design.ID, design.Title))
+	if err := DB.Offset(offset).Limit(pageSize).Find(&resultDesigns).Error; err != nil {
+		return err
 	}
 
-	return designs, nil
+	for i, design := range resultDesigns {
+		designs[i] = NewDesign(design.ID, design.Title)
+	}
+
+	return nil
 }

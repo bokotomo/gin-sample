@@ -14,11 +14,22 @@ docker-compose exec app bash
 
 make init
 
-go run migrate.go
-
-go run seed.go
-
 go run main.go
+```
+
+# マイグレーション
+```
+make migrate
+```
+
+# シード
+```
+make seed
+```
+
+# テーブルクリア
+```
+make clear_db
 ```
 
 # 構文チェック

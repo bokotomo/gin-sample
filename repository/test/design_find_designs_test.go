@@ -8,6 +8,7 @@ import (
 
 func TestFindAllDesigns(t *testing.T) {
 	repository := NewDesignRepository()
-	_, err := repository.FindAllDesigns()
+	page := 1
+	_, _, err := repository.FindDesigns(page)
 	assert.Empty(t, err)
 }
