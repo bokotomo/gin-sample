@@ -12,4 +12,5 @@ import (
 func App(router *gin.Engine) {
 	version := "/v1"
 	router.GET(version+"/designs", DesignIndex)
+	router.GET(version+"/design/:designId", DesignShow)
 }

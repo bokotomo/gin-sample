@@ -6,5 +6,9 @@ import (
 
 type Design struct {
 	gorm.Model
-	Title string
+	Title     string
+	Text      string
+	Good      int
+	Comments  int
+	Thumbnail string
 }

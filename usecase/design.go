@@ -13,6 +13,10 @@ func NewDesignUseCase(designPort DesignPort) *DesignUseCase {
 	return &DesignUseCase{designPort: designPort}
 }
 
-func (this *DesignUseCase) FindDesigns(designs *[10]*Design, total *int, page int) error {
+func (this *DesignUseCase) FindDesigns(designs *[10]Design, total *int, page int) error {
 	return this.designPort.FindDesigns(designs, total, page)
+}
+
+func (this *DesignUseCase) FindDesign(design *Design, designId int) error {
+	return this.designPort.FindDesign(design, designId)
 }
