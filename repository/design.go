@@ -44,7 +44,7 @@ func (this *DesignRepository) FindDesigns(designs *[10]Design, total *int, page 
 	}
 
 	for i, d := range ds {
-		designs[i].SetPickup(d.ID, d.Title, d.Thumbnail)
+		designs[i].SetPickup(d.ID, d.Title, d.Good, d.Thumbnail)
 	}
 
 	return nil

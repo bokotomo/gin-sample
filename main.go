@@ -3,6 +3,7 @@ package main
 import (
 	"gin-sample/driver"
 	"gin-sample/router"
+	"gin-sample/util"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"strconv"
@@ -19,6 +20,9 @@ func main() {
 	// DB connection
 	driver.Init()
 	defer driver.DB.Close()
+
+	// Middleware init
+	util.FileInit()
 
 	// Routing
 	r := gin.Default()

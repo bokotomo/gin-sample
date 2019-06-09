@@ -19,6 +19,7 @@ func ResponseDesignIndex(context *gin.Context, designs *[10]Design, total *int, 
 		designsJson = append(designsJson, map[string]interface{}{
 			"id":    design.Id(),
 			"title": design.Title(),
+			"good":  design.Good(),
 		})
 	}
 

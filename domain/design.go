@@ -25,11 +25,11 @@ func (this *Design) Set(id uint, title string, text string, good int, comments i
 	this.exists = true
 }
 
-func (this *Design) SetPickup(id uint, title string, thumbnail string) {
+func (this *Design) SetPickup(id uint, title string, good int, thumbnail string) {
 	this.id = id
 	this.title = title
 	this.text = ""
-	this.good = 0
+	this.good = good
 	this.comments = 0
 	this.date = ""
 	this.thumbnail = thumbnail

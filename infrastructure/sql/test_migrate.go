@@ -7,10 +7,10 @@ import (
 )
 
 func main() {
-	if err := godotenv.Load(); err != nil {
+	if err := godotenv.Load(".env"); err != nil {
 		panic(".env file cannot be load.")
 	}
 	TestInit()
-	TestDB.AutoMigrate(&Design{})
+	TestDB.AutoMigrate(&Design{}, &Token{}, &User{})
 	defer TestDB.Close()
 }
