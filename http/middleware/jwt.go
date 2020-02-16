@@ -3,14 +3,16 @@ package middleware
 import (
 	. "gin-sample/repository"
 	. "gin-sample/usecase"
+
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	// "github.com/dgrijalva/jwt-go/request"
+
 	"crypto/rsa"
 	. "fmt"
 	. "gin-sample/util"
 )
 
+// AuthMiddleware is
 func AuthMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authorizationHeader := c.Request.Header.Get("Authorization")

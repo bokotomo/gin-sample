@@ -24,9 +24,7 @@ func DesignIndex(c *gin.Context) {
 
 // DesignShow is
 func DesignShow(c *gin.Context) {
-	var (
-		design domain.Design
-	)
+	var design domain.Design
 	designID, _ := strconv.Atoi(c.Param("designId"))
 	uc := usecase.NewDesignUseCase(repository.NewDesignRepository())
 	err := uc.FindDesign(&design, designID)

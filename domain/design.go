@@ -12,56 +12,66 @@ type Design struct {
 	exists    bool
 }
 
-func (this *Design) Set(id uint, title string, text string, good int, comments int, date string, thumbnail string) {
-	this.id = id
-	this.title = title
-	this.text = text
-	this.good = good
-	this.comments = comments
-	this.date = date
-	this.thumbnail = thumbnail
-	this.exists = true
+// Set is
+func (d *Design) Set(id uint, title, text string, good, comments int, date, thumbnail string) {
+	d.id = id
+	d.title = title
+	d.text = text
+	d.good = good
+	d.comments = comments
+	d.date = date
+	d.thumbnail = thumbnail
+	d.exists = true
 }
 
-func (this *Design) SetPickup(id uint, title string, good int, thumbnail string) {
-	this.id = id
-	this.title = title
-	this.text = ""
-	this.good = good
-	this.comments = 0
-	this.date = ""
-	this.thumbnail = thumbnail
-	this.exists = true
+// SetPickup is
+func (d *Design) SetPickup(id uint, title string, good int, thumbnail string) {
+	d.id = id
+	d.title = title
+	d.text = ""
+	d.good = good
+	d.comments = 0
+	d.date = ""
+	d.thumbnail = thumbnail
+	d.exists = true
 }
 
-func (this *Design) NotExists() bool {
-	return !this.exists
+// NotExists is
+func (d *Design) NotExists() bool {
+	return !d.exists
 }
 
-func (this *Design) Id() uint {
-	return this.id
+// Id is
+func (d *Design) Id() uint {
+	return d.id
 }
 
-func (this *Design) Title() string {
-	return this.title
+// Title is
+func (d *Design) Title() string {
+	return d.title
 }
 
-func (this *Design) Text() string {
-	return this.text
+// Text is
+func (d *Design) Text() string {
+	return d.text
 }
 
-func (this *Design) Good() int {
-	return this.good
+// Good is
+func (d *Design) Good() int {
+	return d.good
 }
 
-func (this *Design) Comments() int {
-	return this.comments
+// Comments is
+func (d *Design) Comments() int {
+	return d.comments
 }
 
-func (this *Design) Date() string {
-	return this.date
+// Date is
+func (d *Design) Date() string {
+	return d.date
 }
 
-func (this *Design) Thumbnail() string {
-	return this.thumbnail
+// Thumbnail is
+func (d *Design) Thumbnail() string {
+	return d.thumbnail
 }

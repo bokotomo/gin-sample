@@ -40,6 +40,11 @@ make check
 
 # 構文自動修正
 ```
+make fmt
+```
+
+# golint
+```
 make lint
 ```
 

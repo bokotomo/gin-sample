@@ -6,35 +6,28 @@ import (
 	"gin-sample/model"
 )
 
-type DesignRepository struct {
-}
+// DesignRepository is
+type DesignRepository struct{}
 
+// NewDesignRepository is
 func NewDesignRepository() *DesignRepository {
 	return new(DesignRepository)
 }
 
-/*
- * ページングトータル数を返す
- * total   ページングトータル数
- */
-func (this *DesignRepository) FindDesignsTotal(total *int) error {
+// FindDesignsTotal ページングトータル数を返す
+func (dr *DesignRepository) FindDesignsTotal(total *int) error {
 	return DB.Model(&model.Design{}).Count(total).Error
 }
 
-/*
- * デザイン一覧をページーションで返す
- * designs デザインドメイン一覧
- * total   ページングトータル数
- * page    ページング番号
- */
-func (this *DesignRepository) FindDesigns(designs *[10]Design, total *int, page int) error {
+// FindDesigns デザイン一覧をページーションで返す
+func (dr *DesignRepository) FindDesigns(designs *[10]Design, total *int, page int) error {
 	if page < 0 {
 		page = 1
 	}
 	pageSize := 10
 	offset := pageSize * (page - 1)
 
-	if err := this.FindDesignsTotal(total); err != nil {
+	if err := dr.FindDesignsTotal(total); err != nil {
 		return err
 	}
 
@@ -50,12 +43,8 @@ func (this *DesignRepository) FindDesigns(designs *[10]Design, total *int, page 
 	return nil
 }
 
-/*
- * デザイン詳細を返す
- * designs  デザインドメイン一覧
- * designId デザインID
- */
-func (this *DesignRepository) FindDesign(design *Design, designId int) error {
+// FindDesign デザイン詳細を返す
+func (dr *DesignRepository) FindDesign(design *Design, designId int) error {
 	d := model.Design{}
 	if err := DB.First(&d, designId).Error; err != nil {
 		return err

@@ -1,8 +1,6 @@
-//
-// 認証を扱うドメイン
-//
 package domain
 
+// JWT 認証を扱うドメイン
 type JWT struct {
 	public string
 }

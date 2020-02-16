@@ -6,6 +6,7 @@ type Error struct {
 	err  error
 }
 
+// NewError is
 func NewError(code int, err error) *Error {
 	return &Error{
 		code: code,
@@ -13,10 +14,12 @@ func NewError(code int, err error) *Error {
 	}
 }
 
-func (this *Error) Code() int {
-	return this.code
+// Code is
+func (e *Error) Code() int {
+	return e.code
 }
 
-func (this *Error) Err() error {
-	return this.err
+// Err is
+func (e *Error) Err() error {
+	return e.err
 }

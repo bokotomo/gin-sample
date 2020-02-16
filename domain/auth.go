@@ -11,7 +11,7 @@ type Token struct {
 }
 
 // Set is
-func (t *Token) Set(id uint, userId uint, token string, exp time.Time) {
+func (t *Token) Set(id, userId uint, token string, exp time.Time) {
 	t.id = id
 	t.userId = userId
 	t.token = token
