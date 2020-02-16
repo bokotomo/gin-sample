@@ -4,14 +4,13 @@ import (
 	"gin-sample/driver"
 	"gin-sample/router"
 	"gin-sample/util"
+	"strconv"
+
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"strconv"
 )
 
 func main() {
-	port := 80
-
 	// Load ENV
 	if err := godotenv.Load(); err != nil {
 		panic(".env file cannot be load.")
@@ -27,5 +26,6 @@ func main() {
 	// Routing
 	r := gin.Default()
 	router.App(r)
+	port := 80
 	r.Run(":" + strconv.Itoa(port))
 }

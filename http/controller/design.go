@@ -1,31 +1,34 @@
 package controller
 
 import (
-	. "gin-sample/domain"
-	. "gin-sample/http/response"
-	. "gin-sample/repository"
-	. "gin-sample/usecase"
-	"github.com/gin-gonic/gin"
+	"gin-sample/domain"
+	"gin-sample/http/response"
+	"gin-sample/repository"
+	"gin-sample/usecase"
 	"strconv"
+
+	"github.com/gin-gonic/gin"
 )
 
+// DesignIndex is
 func DesignIndex(c *gin.Context) {
 	var (
 		total   int
-		designs [10]Design
+		designs [10]domain.Design
 	)
-	uc := NewDesignUseCase(NewDesignRepository())
+	uc := usecase.NewDesignUseCase(repository.NewDesignRepository())
 	page, _ := strconv.Atoi(c.Query("page"))
 	err := uc.FindDesigns(&designs, &total, page)
-	ResponseDesignIndex(c, &designs, &total, err)
+	response.ResponseDesignIndex(c, &designs, &total, err)
 }
 
+// DesignShow is
 func DesignShow(c *gin.Context) {
 	var (
-		design Design
+		design domain.Design
 	)
-	designId, _ := strconv.Atoi(c.Param("designId"))
-	uc := NewDesignUseCase(NewDesignRepository())
-	err := uc.FindDesign(&design, designId)
-	ResponseDesignShow(c, &design, err)
+	designID, _ := strconv.Atoi(c.Param("designId"))
+	uc := usecase.NewDesignUseCase(repository.NewDesignRepository())
+	err := uc.FindDesign(&design, designID)
+	response.ResponseDesignShow(c, &design, err)
 }

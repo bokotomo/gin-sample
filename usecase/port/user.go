@@ -1,5 +1,6 @@
 package port
 
+// UserPort is
 type UserPort interface {
-	CreateUser(email string, password string) (*string, error)
+	CreateUser(email, password string) (*string, error)
 }

@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// ResponseUserStore is
 func ResponseUserStore(context *gin.Context, token *string, err error) {
 	if err != nil {
 		ErrorResponse(context, 400, 0, err)

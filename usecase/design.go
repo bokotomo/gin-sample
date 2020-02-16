@@ -1,22 +1,26 @@
 package usecase
 
 import (
-	. "gin-sample/domain"
-	. "gin-sample/usecase/port"
+	"gin-sample/domain"
+	"gin-sample/usecase/port"
 )
 
+// DesignUseCase is
 type DesignUseCase struct {
-	designPort DesignPort
+	designPort port.DesignPort
 }
 
-func NewDesignUseCase(designPort DesignPort) *DesignUseCase {
+// NewDesignUseCase is
+func NewDesignUseCase(designPort port.DesignPort) *DesignUseCase {
 	return &DesignUseCase{designPort: designPort}
 }
 
-func (this *DesignUseCase) FindDesigns(designs *[10]Design, total *int, page int) error {
-	return this.designPort.FindDesigns(designs, total, page)
+// FindDesigns is
+func (d *DesignUseCase) FindDesigns(designs *[10]domain.Design, total *int, page int) error {
+	return d.designPort.FindDesigns(designs, total, page)
 }
 
-func (this *DesignUseCase) FindDesign(design *Design, designId int) error {
-	return this.designPort.FindDesign(design, designId)
+// FindDesign isis
+func (d *DesignUseCase) FindDesign(design *domain.Design, designID int) error {
+	return d.designPort.FindDesign(design, designID)
 }

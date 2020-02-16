@@ -1,20 +1,23 @@
 package controller
 
 import (
-	. "gin-sample/http/response"
-	. "gin-sample/repository"
-	. "gin-sample/usecase"
+	"gin-sample/http/response"
+	"gin-sample/repository"
+	"gin-sample/usecase"
+
 	"github.com/gin-gonic/gin"
 )
 
+// LoginIndex is
 func LoginIndex(c *gin.Context) {
 	email := c.PostForm("email")
 	password := c.PostForm("password")
-	uc := NewAuthUseCase(NewAuthRepository())
+	uc := usecase.NewAuthUseCase(repository.NewAuthRepository())
 	token, err := uc.Login(email, password)
-	ResponseLoginIndex(c, token, err)
+	response.ResponseLoginIndex(c, token, err)
 }
 
+// AuthorizeIndex is
 func AuthorizeIndex(c *gin.Context) {
 	// email := c.PostForm("email")
 	// password := c.PostForm("password")
@@ -25,5 +28,5 @@ func AuthorizeIndex(c *gin.Context) {
 	// Println(signBytes)
 	// Println(verifyBytes)
 
-	ResponseLoginIndex(c, &token, nil)
+	response.ResponseLoginIndex(c, &token, nil)
 }

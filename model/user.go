@@ -1,5 +1,6 @@
 package model
 
+// User is
 type User struct {
 	ID       uint   `gorm:"primary_key"`
 	Password string `gorm:"not null"`

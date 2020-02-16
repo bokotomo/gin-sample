@@ -1,8 +1,6 @@
-//
-// デザインを扱うドメイン
-//
 package domain
 
+// Design デザインを扱うドメイン
 type Design struct {
 	id        uint
 	title     string

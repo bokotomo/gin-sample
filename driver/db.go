@@ -2,15 +2,20 @@ package driver
 
 import (
 	"fmt"
+	"os"
+
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	"os"
 )
 
+// DB is
 var DB *gorm.DB = nil
+
+// TestDB is
 var TestDB *gorm.DB = nil
 var formmat string = "%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local"
 
+// Init is
 func Init() {
 	if DB != nil {
 		return
@@ -29,6 +34,7 @@ func Init() {
 	}
 }
 
+// TestInit is
 func TestInit() {
 	if TestDB != nil {
 		return

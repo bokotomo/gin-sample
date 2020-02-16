@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// Token is
 type Token struct {
 	ID     uint      `gorm:"primary_key"`
 	UserID uint      `gorm:"not null"`

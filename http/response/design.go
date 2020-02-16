@@ -1,11 +1,13 @@
 package response
 
 import (
-	. "gin-sample/domain"
+	"gin-sample/domain"
+
 	"github.com/gin-gonic/gin"
 )
 
-func ResponseDesignIndex(context *gin.Context, designs *[10]Design, total *int, err error) {
+// ResponseDesignIndex is
+func ResponseDesignIndex(context *gin.Context, designs *[10]domain.Design, total *int, err error) {
 	if err != nil {
 		ErrorResponse(context, 400, 0, err)
 		return
@@ -29,7 +31,8 @@ func ResponseDesignIndex(context *gin.Context, designs *[10]Design, total *int, 
 	})
 }
 
-func ResponseDesignShow(context *gin.Context, design *Design, err error) {
+// ResponseDesignShow is
+func ResponseDesignShow(context *gin.Context, design *domain.Design, err error) {
 	if err != nil {
 		ErrorResponse(context, 400, 0, err)
 		return

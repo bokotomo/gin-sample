@@ -1,17 +1,20 @@
 package usecase
 
 import (
-	. "gin-sample/usecase/port"
+	"gin-sample/usecase/port"
 )
 
+// UserUseCase is
 type UserUseCase struct {
-	userPort UserPort
+	userPort port.UserPort
 }
 
-func NewUserUseCase(userPort UserPort) *UserUseCase {
+// NewUserUseCase is
+func NewUserUseCase(userPort port.UserPort) *UserUseCase {
 	return &UserUseCase{userPort: userPort}
 }
 
-func (this *UserUseCase) CreateUser(email string, password string) (*string, error) {
-	return this.userPort.CreateUser(email, password)
+// CreateUser is
+func (u *UserUseCase) CreateUser(email, password string) (*string, error) {
+	return u.userPort.CreateUser(email, password)
 }

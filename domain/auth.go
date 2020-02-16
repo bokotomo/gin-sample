@@ -1,10 +1,8 @@
-//
-// 認証を扱うドメイン
-//
 package domain
 
 import "time"
 
+// Token 認証を扱うドメイン
 type Token struct {
 	id     uint
 	userId uint
@@ -12,25 +10,30 @@ type Token struct {
 	exp    time.Time
 }
 
-func (this *Token) Set(id uint, userId uint, token string, exp time.Time) {
-	this.id = id
-	this.userId = userId
-	this.token = token
-	this.exp = exp
+// Set is
+func (t *Token) Set(id uint, userId uint, token string, exp time.Time) {
+	t.id = id
+	t.userId = userId
+	t.token = token
+	t.exp = exp
 }
 
-func (this *Token) Id() uint {
-	return this.id
+// Id is
+func (t *Token) Id() uint {
+	return t.id
 }
 
-func (this *Token) UserId() uint {
-	return this.userId
+// UserId is
+func (t *Token) UserId() uint {
+	return t.userId
 }
 
-func (this *Token) Token() string {
-	return this.token
+// Token is
+func (t *Token) Token() string {
+	return t.token
 }
 
-func (this *Token) Exp() time.Time {
-	return this.exp
+// Exp is
+func (t *Token) Exp() time.Time {
+	return t.exp
 }

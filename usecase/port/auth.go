@@ -1,5 +1,6 @@
 package port
 
+// AuthPort is
 type AuthPort interface {
-	Login(email string, password string) (*string, error)
+	Login(email, password string) (*string, error)
 }

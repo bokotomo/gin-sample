@@ -1,17 +1,20 @@
 package usecase
 
 import (
-	. "gin-sample/usecase/port"
+	"gin-sample/usecase/port"
 )
 
+// AuthUseCase is
 type AuthUseCase struct {
-	authPort AuthPort
+	authPort port.AuthPort
 }
 
-func NewAuthUseCase(authPort AuthPort) *AuthUseCase {
+// NewAuthUseCase is
+func NewAuthUseCase(authPort port.AuthPort) *AuthUseCase {
 	return &AuthUseCase{authPort: authPort}
 }
 
-func (this *AuthUseCase) Login(email string, password string) (*string, error) {
-	return this.authPort.Login(email, password)
+// Login is
+func (a *AuthUseCase) Login(email, password string) (*string, error) {
+	return a.authPort.Login(email, password)
 }

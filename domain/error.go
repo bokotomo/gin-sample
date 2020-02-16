@@ -1,8 +1,6 @@
-//
-// エラーを扱うドメイン
-//
 package domain
 
+// Error エラーを扱うドメイン
 type Error struct {
 	code int
 	err  error

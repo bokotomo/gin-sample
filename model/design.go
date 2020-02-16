@@ -4,6 +4,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// Design is
 type Design struct {
 	gorm.Model
 	Title     string `gorm:"not null"`
