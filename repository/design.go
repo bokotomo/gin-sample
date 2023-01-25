@@ -1,8 +1,8 @@
 package repository
 
 import (
-	. "gin-sample/domain"
-	. "gin-sample/driver"
+	"gin-sample/domain"
+	"gin-sample/driver"
 	"gin-sample/model"
 )
 
@@ -16,11 +16,11 @@ func NewDesignRepository() *DesignRepository {
 
 // FindDesignsTotal ページングトータル数を返す
 func (dr *DesignRepository) FindDesignsTotal(total *int) error {
-	return DB.Model(&model.Design{}).Count(total).Error
+	return driver.DB.Model(&model.Design{}).Count(total).Error
 }
 
 // FindDesigns デザイン一覧をページーションで返す
-func (dr *DesignRepository) FindDesigns(designs *[10]Design, total *int, page int) error {
+func (dr *DesignRepository) FindDesigns(designs *[10]domain.Design, total *int, page int) error {
 	if page < 0 {
 		page = 1
 	}
@@ -32,7 +32,7 @@ func (dr *DesignRepository) FindDesigns(designs *[10]Design, total *int, page in
 	}
 
 	ds := []model.Design{}
-	if err := DB.Offset(offset).Limit(pageSize).Find(&ds).Error; err != nil {
+	if err := driver.DB.Offset(offset).Limit(pageSize).Find(&ds).Error; err != nil {
 		return err
 	}
 
@@ -44,9 +44,9 @@ func (dr *DesignRepository) FindDesigns(designs *[10]Design, total *int, page in
 }
 
 // FindDesign デザイン詳細を返す
-func (dr *DesignRepository) FindDesign(design *Design, designId int) error {
+func (dr *DesignRepository) FindDesign(design *domain.Design, designId int) error {
 	d := model.Design{}
-	if err := DB.First(&d, designId).Error; err != nil {
+	if err := driver.DB.First(&d, designId).Error; err != nil {
 		return err
 	}
 	design.Set(d.ID, d.Title, d.Text, d.Good, d.Comments, d.CreatedAt.Format("2006-01-02 15:4"), d.Thumbnail)

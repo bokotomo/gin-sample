@@ -1,14 +1,20 @@
 package repository
 
 import (
-	. "gin-sample/repository"
-	"github.com/stretchr/testify/assert"
+	"gin-sample/domain"
+	"gin-sample/repository"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestFindAllDesigns(t *testing.T) {
-	repository := NewDesignRepository()
+	repo := repository.NewDesignRepository()
 	page := 1
-	_, _, err := repository.FindDesigns(page)
+	var (
+		total   int
+		designs [10]domain.Design
+	)
+	err := repo.FindDesigns(&designs, &total, page)
 	assert.Empty(t, err)
 }
