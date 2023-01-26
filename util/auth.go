@@ -1,10 +1,13 @@
 package util
 
+// todo リファクタ
+
 import (
 	"crypto/rsa"
 	"io/ioutil"
 	"time"
 
+	// 変える
 	jwt "github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
 )

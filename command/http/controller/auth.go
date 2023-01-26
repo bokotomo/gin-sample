@@ -12,8 +12,10 @@ import (
 func LoginIndex(c *gin.Context) {
 	email := c.PostForm("email")
 	password := c.PostForm("password")
+
 	uc := usecase.NewAuthUseCase(repository.NewAuthRepository())
 	token, err := uc.Login(email, password)
+
 	response.ResponseLoginIndex(c, token, err)
 }
 

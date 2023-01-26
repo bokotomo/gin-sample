@@ -16,9 +16,11 @@ func DesignIndex(c *gin.Context) {
 		total   int
 		designs [10]domain.Design
 	)
+
 	uc := usecase.NewDesignUseCase(repository.NewDesignRepository())
 	page, _ := strconv.Atoi(c.Query("page"))
 	err := uc.FindDesigns(&designs, &total, page)
+
 	response.ResponseDesignIndex(c, &designs, &total, err)
 }
 
@@ -26,7 +28,9 @@ func DesignIndex(c *gin.Context) {
 func DesignShow(c *gin.Context) {
 	var design domain.Design
 	designID, _ := strconv.Atoi(c.Param("designId"))
+
 	uc := usecase.NewDesignUseCase(repository.NewDesignRepository())
 	err := uc.FindDesign(&design, designID)
+
 	response.ResponseDesignShow(c, &design, err)
 }

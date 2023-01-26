@@ -12,7 +12,9 @@ import (
 func UserStore(c *gin.Context) {
 	email := c.PostForm("email")
 	password := c.PostForm("password")
+
 	uc := usecase.NewUserUseCase(repository.NewUserRepository())
 	token, err := uc.CreateUser(email, password)
+
 	response.ResponseUserStore(c, token, err)
 }

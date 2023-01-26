@@ -1,11 +1,8 @@
 # gin-sample
 
-gin のサンプル
+gin の簡易的なサンプル
 
 # 使い方
-
-下のコマンドを打ったら、この URL を読み込んでみる。  
-http://localhost:9998/v1/designs
 
 ```
 cd ./infrastructure/docker
@@ -17,6 +14,8 @@ docker-compose exec app bash
 make init
 
 go run main.go
+
+curl http://localhost:9998/v1/designs
 ```
 
 # マイグレーション
