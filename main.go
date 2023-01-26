@@ -10,7 +10,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func main() {
+// run is
+func run(port int) {
 	// Load ENV
 	if err := godotenv.Load(); err != nil {
 		panic(".env file cannot be load.")
@@ -26,6 +27,10 @@ func main() {
 	// Routing
 	r := gin.Default()
 	router.App(r)
-	port := 80
 	r.Run(":" + strconv.Itoa(port))
+}
+
+func main() {
+	port := 80
+	run(port)
 }

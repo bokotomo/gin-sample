@@ -1,5 +1,6 @@
 package driver
 
+// classにする
 import (
 	"fmt"
 	"os"

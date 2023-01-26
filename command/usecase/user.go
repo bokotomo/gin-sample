@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"gin-sample/usecase/port"
+	"gin-sample/command/usecase/port"
 )
 
 // UserUseCase is

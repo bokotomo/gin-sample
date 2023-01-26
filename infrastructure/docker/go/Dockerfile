@@ -1,6 +1,11 @@
-FROM golang:1.12.5
+FROM golang:1.19-alpine
 
-ENV GO111MODULE on
+
+RUN apk update && apk add make vim mysql-client
+
+# golang
 WORKDIR /gin-sample
-RUN apt-get update && apt-get install vim -y
-RUN apt install -y mysql-client
+ENV GO111MODULE on
+
+# golang lib
+RUN go install github.com/mgechev/revive@latest

@@ -1,15 +1,16 @@
 package middleware
 
 import (
-	. "gin-sample/repository"
-	. "gin-sample/usecase"
+	"gin-sample/command/repository"
+	"gin-sample/command/usecase"
 
+	// 変える
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 
 	"crypto/rsa"
-	. "fmt"
-	. "gin-sample/util"
+	"fmt"
+	"gin-sample/util"
 )
 
 // AuthMiddleware is
@@ -26,11 +27,11 @@ func AuthMiddleware() gin.HandlerFunc {
 			unauthorized(c)
 			return
 		}
-
-		Println("--------------------")
-		uc := NewAuthUseCase(NewAuthRepository())
-		token, err := uc.TokenExists(&token)
-		if err != nil || token.Valid {
+		// todo
+		var userId uint = 1
+		uc := usecase.NewAuthUseCase(repository.NewAuthRepository())
+		tokenExists, err := uc.TokenExists(userId, &token)
+		if err != nil || !tokenExists {
 			unauthorized(c)
 			return
 		}
@@ -47,7 +48,7 @@ func unauthorized(context *gin.Context) {
 func checkToken(tokenString *string) error {
 	token, err := jwt.Parse(*tokenString, func(token *jwt.Token) (interface{}, error) {
 		if _, isSame := token.Method.(*jwt.SigningMethodRSA); !isSame {
-			return nil, Errorf("Unexpected signing method: %v", token.Header["alg"])
+			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
 		}
 		return lookupPublicKey(), nil
 	})
@@ -59,7 +60,7 @@ func checkToken(tokenString *string) error {
 }
 
 func lookupPublicKey() *rsa.PublicKey {
-	verifyKey, err := jwt.ParseRSAPublicKeyFromPEM(VerifyBytes)
+	verifyKey, err := jwt.ParseRSAPublicKeyFromPEM(util.VerifyBytes)
 	if err != nil {
 		panic(err)
 	}

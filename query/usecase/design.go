@@ -2,7 +2,7 @@ package usecase
 
 import (
 	"gin-sample/domain"
-	"gin-sample/usecase/port"
+	"gin-sample/query/usecase/port"
 )
 
 // DesignUseCase is

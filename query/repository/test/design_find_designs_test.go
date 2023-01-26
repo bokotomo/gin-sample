@@ -2,7 +2,7 @@ package repository
 
 import (
 	"gin-sample/domain"
-	"gin-sample/repository"
+	"gin-sample/query/repository"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"gin-sample/http/response"
-	"gin-sample/repository"
-	"gin-sample/usecase"
+	"gin-sample/command/http/response"
+	"gin-sample/command/repository"
+	"gin-sample/command/usecase"
 
 	"github.com/gin-gonic/gin"
 )

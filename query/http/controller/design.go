@@ -2,15 +2,15 @@ package controller
 
 import (
 	"gin-sample/domain"
-	"gin-sample/http/response"
-	"gin-sample/repository"
-	"gin-sample/usecase"
+	"gin-sample/query/http/response"
+	"gin-sample/query/repository"
+	"gin-sample/query/usecase"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-// DesignIndex is
+// DesignIndex デザイン一覧を取得する
 func DesignIndex(c *gin.Context) {
 	var (
 		total   int
@@ -22,7 +22,7 @@ func DesignIndex(c *gin.Context) {
 	response.ResponseDesignIndex(c, &designs, &total, err)
 }
 
-// DesignShow is
+// DesignShow designIdのデザインを取得する
 func DesignShow(c *gin.Context) {
 	var design domain.Design
 	designID, _ := strconv.Atoi(c.Param("designId"))

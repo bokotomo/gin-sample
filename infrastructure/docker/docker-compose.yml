@@ -1,17 +1,17 @@
-version: "3.6"
+version: "3.8"
 
 services:
-  app:
+   go-sample-api:
     build: ./go
-    container_name: "gin-app"
+    container_name: "go-sample-api"
     tty: true
     ports:
       - 9998:80
     volumes:
       - ../../:/gin-sample
-  db:
+   go-sample-api-db:
     image: "mysql:8.0"
-    container_name: "gin-mysql"
+    container_name: "go-sample-api-db"
     environment:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: dev
@@ -21,10 +21,3 @@ services:
       - ./mysql/my.conf:/etc/mysql/conf.d/docker.cnf
     ports:
       - 3999:3306
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
-    container_name: "gin-phpmyadmin"
-    ports:
-      - 8999:80
-    environment:
-      PMA_HOST: db

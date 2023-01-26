@@ -2,6 +2,7 @@ package response
 
 import (
 	"gin-sample/domain"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,7 +10,7 @@ import (
 // ResponseDesignIndex is
 func ResponseDesignIndex(context *gin.Context, designs *[10]domain.Design, total *int, err error) {
 	if err != nil {
-		ErrorResponse(context, 400, 0, err)
+		ErrorResponse(context, http.StatusBadRequest, 0, err)
 		return
 	}
 
@@ -25,7 +26,7 @@ func ResponseDesignIndex(context *gin.Context, designs *[10]domain.Design, total
 		})
 	}
 
-	context.JSON(200, gin.H{
+	context.JSON(http.StatusOK, gin.H{
 		"designs": designsJson,
 		"total":   &total,
 	})
@@ -34,11 +35,11 @@ func ResponseDesignIndex(context *gin.Context, designs *[10]domain.Design, total
 // ResponseDesignShow is
 func ResponseDesignShow(context *gin.Context, design *domain.Design, err error) {
 	if err != nil {
-		ErrorResponse(context, 400, 0, err)
+		ErrorResponse(context, http.StatusBadRequest, 0, err)
 		return
 	}
 
-	context.JSON(200, gin.H{
+	context.JSON(http.StatusOK, gin.H{
 		"id":        design.Id(),
 		"title":     design.Title(),
 		"text":      design.Text(),

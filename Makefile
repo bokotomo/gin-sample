@@ -41,4 +41,4 @@ clear_db:
 
 .PHONY: create_db
 create_db:
-	mysql -uroot -pdev -hdb < ./infrastructure/sql/create_databases.sql
+	mysql -uroot -pdev -hgo-sample-api-db < ./infrastructure/sql/create_databases.sql

@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"gin-sample/usecase/port"
+	"gin-sample/command/usecase/port"
 )
 
 // AuthUseCase is
@@ -17,4 +17,9 @@ func NewAuthUseCase(authPort port.AuthPort) *AuthUseCase {
 // Login is
 func (a *AuthUseCase) Login(email, password string) (*string, error) {
 	return a.authPort.Login(email, password)
+}
+
+// TokenExists is
+func (a *AuthUseCase) TokenExists(userId uint, token *string) (bool, error) {
+	return a.authPort.TokenExists(userId, token)
 }
